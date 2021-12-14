@@ -16,6 +16,8 @@ class MovieViewController: UIViewController {
     let searchBar = UISearchBar()
     
     
+    
+    
     let tableView = UITableView(frame: .zero, style: .plain)
     var stackView: UIStackView {
         let stackView = UIStackView(frame: .zero)
@@ -38,7 +40,7 @@ class MovieViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Movies"
         self.navigationController?.hidesBarsOnSwipe = true
-
+        
         // Do any additional setup after loading the view.
         prepareUI()
         fetchMovieList()
@@ -117,9 +119,32 @@ extension MovieViewController {
     }
 }
 
+
 extension MovieViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        
+    }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         search(shouldShow: false)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        var filteredMovie: [Movie]!
+////        filteredMovie = viewModel.movies
+////        filteredMovieTitle = []
+//        let filteredMovieAgain = filteredMovie.compactMap{$0}
+//
+////
+////        for mov in filteredMovieAgain {
+////            if mov.title.lowercase().contains(searchText.lowercased())    {
+////                filteredMovie.append(mov)
+////            }
+//        }
     }
 }
 
@@ -168,7 +193,7 @@ extension MovieViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         let movie = viewModel.movies![indexPath.row]
-       cell.movieItem = movie
+        cell.movieItem = movie
         return cell
     }
 
